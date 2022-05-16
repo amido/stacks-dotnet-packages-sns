@@ -1,0 +1,78 @@
+variables:
+  - name: region
+    value: westeurope
+  - name: company
+    value: amido
+  - name: project
+    value: stacks
+  - name: domain
+    value: netcore-api
+  - name: self_repo
+    value: stacks-dotnet-packages-sns
+  - name: self_generic_name
+    value: stacks-api
+
+  # GitHub infomration
+  - name: create_release
+    value: true
+  - name: github_release_service_connection
+    value: GitHubReleases
+  - name: github_org
+    value: $(company)
+
+  # Nuget information
+  - name: nuget_connection
+    value: NuGetAmidoStacksServiceConnection
+
+  # SelfConfig
+  # If you haven't specified source_repo at cli runtime please ensure you replace it here
+  # It is case sensitive for TFS based repos
+  - name: self_repo_src
+    value: src/api
+  - name: self_repo_dir
+    value: "$(Agent.BuildDirectory)/s/$(self_repo)"
+  - name: self_repo_tf_src
+    value: deploy/azure/app/kube
+  - name: self_repo_tf_dir
+    value: "$(self_repo_dir)/$(self_repo_tf_src)"
+  - name: self_pipeline_repo
+    value: "$(Agent.BuildDirectory)/s/stacks-pipeline-templates"
+  - name: self_pipeline_scripts_dir
+    value: "$(self_pipeline_repo)/scripts"
+
+
+
+  # DEFAULT IMAGE RUNNER
+  - name: pool_vm_image
+    value: ubuntu-20.04
+
+# BuildVars
+# Path specific for this package, change accordingly
+
+  - name: Package.Feed
+    value: "Stacks"
+
+  - name: Package.Public
+    value: true
+
+  - name: Package.nuget_service_connection
+    value: NuGetAmidoStacksServiceConnection
+
+  - name: Package.Path
+    value: "src/Amido.Stacks.Messaging.AWS.SNS"
+
+  - name: Test.Path
+    value: "$(Package.Path).Tests"
+
+  - name: DotNet.Version
+    value: "6.0.x"
+
+# Versioning
+  - name: Version.Major
+    value: 0
+  - name: Version.Minor
+    value: 2
+  - name: Version.Revision
+    value: $[counter(variables['Version.Minor'], 0)]
+  - name: Version.Number
+    value: $(Version.Major).$(Version.Minor).$(Version.Revision)
