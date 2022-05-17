@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: "/src"
+    ignore:
+      - dependency-name: "Microsoft.Extensions.*"
+        versions: ["5.0"]
+    schedule:
+      interval: daily
+      timezone: Europe/London
+    open-pull-requests-limit: 10
+    rebase-strategy: disabled
+
+  - package-ecosystem: terraform
+    directory: "/deploy/azure/app/kube"
+    schedule:
+      interval: daily
+      timezone: Europe/London
+    open-pull-requests-limit: 10
+    rebase-strategy: disabled
