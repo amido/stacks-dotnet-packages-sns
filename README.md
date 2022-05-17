@@ -14,7 +14,7 @@ You need a SNS instance in order to use this library. You can follow the officia
 
 ### 2.1 Dependencies
 - `Amido.Stacks.Configuration`
-- `Amazon.SimpleNotificationService`
+- `AWSSDK.SimpleNotificationService`
 
 ### 2.2 Currently Supported messages
 
@@ -76,17 +76,22 @@ In this case the `MenuCreated` has a `MenuCreatedHandler`. The handler implement
         "Identifier": "TOPIC_ARN",
         "Source": "Environment"
       }
+  },
+  "AWS": {
+      "Region": "eu-west-2" 
   }
 }
 ```
+
 ***Usage***
+
 ```cs
 public class Startup
 {
-    public void ConfigureServices(IServiceCollection services)
+    public void ConfigureServices(IServiceCollection services, WebHostBuilderContext context)
     {
-        services.Configure<AwsSqsConfiguration>(context.Configuration.GetSection("AwsSnsConfiguration"));
-        services.AddAwsSns();
+        services.Configure<AwsSnsConfiguration>(context.Configuration.GetSection("AwsSnsConfiguration"));
+        services.AddAwsSns(context.Configuration);
     }
 }
 ```
