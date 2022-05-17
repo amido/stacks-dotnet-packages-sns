@@ -1,5 +1,4 @@
 using System.Text.Json;
-using Amazon;
 using Amazon.Runtime;
 using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;

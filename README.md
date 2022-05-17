@@ -72,7 +72,7 @@ In this case the `MenuCreated` has a `MenuCreatedHandler`. The handler implement
 ```json
 {
   "AwsSnsConfiguration": {
-      "TopicARN": {
+      "TopicArn": {
         "Identifier": "TOPIC_ARN",
         "Source": "Environment"
       }
