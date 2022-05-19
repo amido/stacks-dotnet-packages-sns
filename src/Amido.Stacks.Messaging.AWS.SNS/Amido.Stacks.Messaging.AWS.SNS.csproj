@@ -18,7 +18,7 @@
       <PackageReference Include="Amido.Stacks.Configuration" Version="0.2.20" />
       <PackageReference Include="Amido.Stacks.DependencyInjection" Version="0.2.19" />
       <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.2" />
-      <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.3.58" />
+      <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.3.59" />
       <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
     </ItemGroup>
 
